@@ -5,12 +5,23 @@ jobs:
     first_job:
         runs-on: ubuntu-latest
         steps:
+        - uses: actions/checkout@v4
+          name: Checkout the Main Repo
+
         - name: Welcome Message
           run: echo "My first Github Actions Workflow"
 
         - name: List Files
           run: ls 
+
         - name: Read file
           run: cat README.md
+
+    # secont_job: 
+    #     runs-on: ubuntu-latest
+    #     steps:
+    #       - uses: actions/checkout@v3
+    #       - name: Second Job
+    #         run: echo "This is second job"
 
     
