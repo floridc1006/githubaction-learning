@@ -15,4 +15,6 @@ jobs:
           run: |
             chmod +x ./ascii-script.sh 
             ./ascii-script.sh
+        - name: Read into dragon.txt
+          run: cat dragon.txt
              
