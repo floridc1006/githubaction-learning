@@ -15,16 +15,29 @@ jobs:
           run: |
             chmod +x ./ascii-script.sh 
             ./ascii-script.sh
+        - name: Upload Artifact
+          uses: actions/upload-artifact@v3
+          with:
+            name: my-artifact
+            path: dragon.txt
     second_job:
           needs: first_job
           runs-on: ubuntu-latest
           steps:
+          - name: Download Artifact
+            uses: actions/download-artifact@v3
+            with:
+              name: my-artifact
           - name: Read into dragon.txt
             run: grep -i "dragon" dragon.txt
     third_job:
           needs: second_job
           runs-on: ubuntu-latest
           steps:
+          - name: Download Artifact
+            uses: actions/download-artifact@v3
+            with:
+              name: my-artifact
           - name: Read into dragon.txt
             run: cat dragon.txt  
           - name: Running deploy
