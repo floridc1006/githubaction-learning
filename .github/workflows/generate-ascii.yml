@@ -15,6 +15,15 @@ jobs:
           run: |
             chmod +x ./ascii-script.sh 
             ./ascii-script.sh
-        - name: Read into dragon.txt
-          run: cat dragon.txt
-             
+    second_job:
+          runs-on: ubuntu-latest
+          steps:
+          - name: Read into dragon.txt
+            run: grep -i "dragon" dragon.txt
+    third_job:
+          runs-on: ubuntu-latest
+          steps:
+          - name: Read into dragon.txt
+            run: cat dragon.txt  
+          - name: Running deploy
+            run: echo "Deploying"
